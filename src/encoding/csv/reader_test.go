@@ -39,6 +39,11 @@ var readTests = []struct {
 		Output: [][]string{{"a", "b"}, {"c", "d"}},
 	},
 	{
+		Name:   "Soft EOF (Substitute/Ctrl-Z) Character",
+		Input:  "a,b\r\nc,d\r\n\x1a",
+		Output: [][]string{{"a", "b"}, {"c", "d"}},
+	},
+	{
 		Name:   "BareCR",
 		Input:  "a,b\rc,d\r\n",
 		Output: [][]string{{"a", "b\rc", "d"}},
